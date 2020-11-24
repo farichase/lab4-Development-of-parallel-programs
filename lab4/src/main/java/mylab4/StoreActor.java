@@ -7,6 +7,8 @@ public class StoreActor extends AbstractActor {
     @Override
     public Receive createRecieve() {
         return ReceiveBuilder.create()
-                .match(FunctionStore.class, )
+                .match(FunctionStore.class, message -> {
+                    
+                })
     }
 }
