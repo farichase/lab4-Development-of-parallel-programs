@@ -1,4 +1,12 @@
 package mylab4;
 
-public class StoreActor {
+import akka.actor.AbstractActor;
+import akka.japi.pf.ReceiveBuilder;
+
+public class StoreActor extends AbstractActor {
+    @Override
+    public Receive createRecieve() {
+        return ReceiveBuilder.create()
+                .match()
+    }
 }
