@@ -4,6 +4,7 @@ import akka.actor.AbstractActor;
 import akka.japi.pf.ReceiveBuilder;
 
 public class StoreActor extends AbstractActor {
+    private 
     @Override
     public Receive createRecieve() {
         return ReceiveBuilder.create()
