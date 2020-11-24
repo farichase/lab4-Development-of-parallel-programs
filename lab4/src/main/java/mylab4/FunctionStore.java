@@ -1,2 +1,4 @@
-package mylab4;public class FunctionStore {
+package mylab4;
+
+public class FunctionStore {
 }
