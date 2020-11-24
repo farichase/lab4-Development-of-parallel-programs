@@ -1,2 +1,4 @@
-package mylab4;public class AkkaApp {
+package mylab4;
+
+public class AkkaApp {
 }
