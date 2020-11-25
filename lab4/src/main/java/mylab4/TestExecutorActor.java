@@ -1,2 +1,4 @@
-package mylab4;public class TestExecutorActor {
+package mylab4;
+
+public class TestExecutorActor {
 }
