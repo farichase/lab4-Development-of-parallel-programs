@@ -19,7 +19,7 @@ public class StoreActor extends AbstractActor {
                     }
                     store.get(packageId).put(test.getTestName(), test.getExpectedResult());
                 })
-                .match(String.class, line -> sender().tell(line, self()))
+                .match(String.class, s -> sender().tell(s, self()))
                 .build();
     }
     public static Props props() {
