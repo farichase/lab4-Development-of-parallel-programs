@@ -7,7 +7,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class StoreActor implements AbstractActor {
-    private Map<String, ArrayList<Test>> store = new HashMap<>()
+    private Map<String, Map<String, String>> store = new HashMap<>()
     @Override
     public Receive createReceive(){
         return receiveBuilder()
@@ -15,10 +15,9 @@ public class StoreActor implements AbstractActor {
                 .match(Test.class, test -> {
                     String packageId = test.getOnePackage().getPackageId();
                     if (!this.store.containsKey(packageId)){
-                        store.put(packageId, new ArrayList<>());
-                    } else {
-                        this.store.get(packageId).add(test);
+                        store.put(packageId, new HashMap<>());
                     }
+                    store.get(packageId).put(test.getTestName(), test.getExpectedResult());
                 })
                 .match()
                 .build();
