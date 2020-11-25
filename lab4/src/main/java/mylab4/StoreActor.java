@@ -5,7 +5,9 @@ import akka.japi.pf.ReceiveBuilder;
 
 public class StoreActor extends AbstractActor {
     private void msgHandler(FunctionStore msg){
-
+        for (Test test : msg.getTests()) {
+            
+        }
     }
     @Override
     public Receive createReceive() {
