@@ -21,6 +21,7 @@ public class StoreActor implements AbstractActor {
                     }
                 })
                 .match()
+                .build();
 
     }
 }
