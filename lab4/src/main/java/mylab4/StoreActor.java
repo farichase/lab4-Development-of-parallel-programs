@@ -4,7 +4,7 @@ import akka.actor.AbstractActor;
 import akka.japi.pf.ReceiveBuilder;
 
 public class StoreActor extends AbstractActor {
-    private void funcHandler(FunctionStore jsFunc){
+    private void funcHandler(StoreMessage jsFunc){
         for (Test test : jsFunc.getTests()) {
 
         }
@@ -12,7 +12,7 @@ public class StoreActor extends AbstractActor {
     @Override
     public Receive createReceive() {
         return ReceiveBuilder.create()
-                .match(FunctionStore.class, jsFunc -> funcHandler(jsFunc))
+                .match(StoreMessage.class, jsFunc -> funcHandler(jsFunc))
 
                 .build();
     }

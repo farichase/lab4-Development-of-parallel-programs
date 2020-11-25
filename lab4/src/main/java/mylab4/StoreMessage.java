@@ -5,14 +5,14 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import java.io.Serializable;
 import java.util.List;
 
-public class FunctionStore implements Serializable {
+public class StoreMessage implements Serializable {
     private final String packageId;
     private final String jsScripts;
     private final String functionName;
     private final List<Test> tests;
 
     @JsonCreator
-    public FunctionStore(
+    public StoreMessage(
             @JsonProperty("packageId") String packageId,
             @JsonProperty("jsScripts") String jsScripts,
             @JsonProperty("functionName") String functionName,
