@@ -19,7 +19,7 @@ public class StoreActor implements AbstractActor {
                     }
                     store.get(packageId).put(test.getTestName(), test.getExpectedResult());
                 })
-                .match()
+                .match(String.class, line -> sender().tell())
                 .build();
 
     }
