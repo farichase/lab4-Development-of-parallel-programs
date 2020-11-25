@@ -7,10 +7,10 @@ import akka.japi.pf.ReceiveBuilder;
 
 public class RouteActor extends AbstractActor {
     private ActorRef storeActor;
-
+    private ActorRef testActor
 
     public RouteActor(ActorSystem system) {
-        this.storeActor = system.actorOf(StoreActor.props(), )
+        this.storeActor = system.actorOf(StoreActor.props(), "store");
     }
     private void funcHandler(StoreMessage jsFunc){
         for (Test test : jsFunc.getTests()) {
