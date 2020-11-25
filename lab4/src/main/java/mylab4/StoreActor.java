@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
-public class StoreActor implements AbstractActor {
+public class StoreActor extends AbstractActor {
     private Map<String, Map<String, String>> store = new HashMap<>()
     @Override
     public Receive createReceive(){
