@@ -16,8 +16,11 @@ public class StoreActor implements AbstractActor {
                     String packageId = test.getOnePackage().getPackageId();
                     if (!this.store.containsKey(packageId)){
                         store.put(packageId, new ArrayList<>());
+                    } else {
+                        this.store.get(packageId).add(test);
                     }
                 })
+                .match()
 
     }
 }
