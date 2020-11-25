@@ -22,4 +22,5 @@ public class StoreActor extends AbstractActor {
                 .match(String.class, line -> sender().tell(line, self()))
                 .build();
     }
+    
 }
