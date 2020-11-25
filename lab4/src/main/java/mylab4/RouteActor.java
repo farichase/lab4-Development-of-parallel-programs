@@ -4,6 +4,7 @@ import akka.actor.AbstractActor;
 import akka.actor.ActorRef;
 import akka.actor.ActorSystem;
 import akka.japi.pf.ReceiveBuilder;
+import akka.routing.RoundRobinPool;
 
 public class RouteActor extends AbstractActor {
     private ActorRef storeActor;
@@ -11,7 +12,9 @@ public class RouteActor extends AbstractActor {
 
     public RouteActor(ActorSystem system) {
         this.storeActor = system.actorOf(StoreActor.props(), "store");
-        this.testExecutorActor = 
+        this.testExecutorActor = system.actorOf(
+                new RoundRobinPool().props()
+        );
     }
     private void funcHandler(StoreMessage jsFunc){
         for (Test test : jsFunc.getTests()) {
