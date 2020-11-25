@@ -11,6 +11,7 @@ public class RouteActor extends AbstractActor {
 
     public RouteActor(ActorSystem system) {
         this.storeActor = system.actorOf(StoreActor.props(), "store");
+        this.testExecutorActor = 
     }
     private void funcHandler(StoreMessage jsFunc){
         for (Test test : jsFunc.getTests()) {
