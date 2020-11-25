@@ -7,7 +7,7 @@ import akka.japi.pf.ReceiveBuilder;
 
 public class RouteActor extends AbstractActor {
     private ActorRef storeActor;
-    private ActorRef testActor
+    private ActorRef testExecutorActor;
 
     public RouteActor(ActorSystem system) {
         this.storeActor = system.actorOf(StoreActor.props(), "store");
