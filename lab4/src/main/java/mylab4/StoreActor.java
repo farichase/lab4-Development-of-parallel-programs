@@ -6,7 +6,7 @@ import akka.japi.pf.ReceiveBuilder;
 public class StoreActor extends AbstractActor {
     private void funcHandler(StoreMessage jsFunc){
         for (Test test : jsFunc.getTests()) {
-
+            
         }
     }
     @Override
