@@ -5,12 +5,12 @@ import akka.actor.ActorRef;
 import akka.actor.ActorSystem;
 import akka.japi.pf.ReceiveBuilder;
 
-public class StoreActor extends AbstractActor {
+public class RouteActor extends AbstractActor {
     private ActorRef storeActor;
 
 
-    public StoreActor(ActorSystem system) {
-        this.storeActor = system.actorOf()
+    public RouteActor(ActorSystem system) {
+        this.storeActor = system.actorOf(StoreActor.props(), "StoreActor")
     }
     private void funcHandler(StoreMessage jsFunc){
         for (Test test : jsFunc.getTests()) {
