@@ -26,10 +26,10 @@ public class FunctionStore implements Serializable {
     public String getPackageId() {
         return this.packageId;
     }
-    public String jsScripts() {
+    public String getJsScripts() {
         return this.jsScripts;
     }
-    public String functionName() {
+    public String getFunctionName() {
         return this.functionName;
     }
     public List<Test> getTests () {
