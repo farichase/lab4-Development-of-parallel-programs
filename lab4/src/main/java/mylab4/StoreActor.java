@@ -2,7 +2,6 @@ package mylab4;
 
 import akka.actor.AbstractActor;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -22,5 +21,5 @@ public class StoreActor extends AbstractActor {
                 .match(String.class, line -> sender().tell(line, self()))
                 .build();
     }
-    
+
 }
