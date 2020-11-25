@@ -10,6 +10,7 @@ public class RouteActor extends AbstractActor {
 
 
     public RouteActor(ActorSystem system) {
+
     }
     private void funcHandler(StoreMessage jsFunc){
         for (Test test : jsFunc.getTests()) {
