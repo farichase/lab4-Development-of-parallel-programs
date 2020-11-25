@@ -4,7 +4,7 @@ import akka.actor.AbstractActor;
 import akka.japi.pf.ReceiveBuilder;
 
 public class StoreActor extends AbstractActor {
-    private void msgHandler(){
+    private void msgHandler(FunctionStore msg){
 
     }
     @Override
