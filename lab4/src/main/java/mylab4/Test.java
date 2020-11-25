@@ -6,10 +6,10 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import java.io.Serializable;
 
 public class Test implements Serializable {
-    private final
     private final String testName;
     private final String expectedResult;
     private final Integer[] params;
+    private StoreMessage onePackage;
 
     @JsonCreator
     public Test(
@@ -29,5 +29,8 @@ public class Test implements Serializable {
     }
     public Integer[] getParams() {
         return this.params;
+    }
+    public StoreMessage getOnePackage(){
+        return this.onePackage;
     }
 }

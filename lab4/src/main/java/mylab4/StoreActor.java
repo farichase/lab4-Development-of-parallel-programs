@@ -13,7 +13,7 @@ public class StoreActor implements AbstractActor {
         return receiveBuilder()
                 .create()
                 .match(Test.class, test -> {
-                    if (!this.store.containsKey())
+                    if (!this.store.containsKey(test.getOnePackage().getPackageId()))
                 })
 
     }
