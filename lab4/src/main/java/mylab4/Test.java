@@ -6,6 +6,6 @@ import java.util.List;
 public class Test implements Serializable {
     private final String testName;
     private final String expectedResult;
-    private final  params
+    private final Integer[] params;
 
 }
