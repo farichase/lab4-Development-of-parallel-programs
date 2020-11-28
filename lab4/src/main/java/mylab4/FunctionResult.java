@@ -14,8 +14,4 @@ public class FunctionResult {
     public String getResult() {
         return this.result;
     }
-    @Override
-    public String toString(){
-        return ""
-    }
 }
