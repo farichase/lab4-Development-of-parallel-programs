@@ -23,9 +23,12 @@ public class RouteActor extends AbstractActor {
     private void funcHandler(StoreFunction func){
         for (int i = 0; i < func.getTests().size(); i++) {
             testExecutorActor.tell(
-                    new UnitTest(func.getFunctionName(),
+                    new UnitTest(func.getPackageId(),
+                                func.getJsScripts(),
+                                func.getFunctionName(),
                                 func.getTests().get(i).getTestName(),
-                                func.get)
+                                func.getTests().get(i).getExpectedResult(),
+                            )
             );
         }
     }
