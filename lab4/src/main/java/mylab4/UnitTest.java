@@ -1,4 +1,4 @@
 package mylab4;
 
-public class UnitTest extends {
+public class UnitTest {
 }
