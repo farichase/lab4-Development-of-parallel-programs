@@ -6,6 +6,8 @@ public class TestExecutorActor extends AbstractActor {
     @Override
     public Receive createReceive(){
         return receiveBuilder()
-                .match()
+                .match(UnitTest.class, item -> {
+                    
+                })
     }
 }
