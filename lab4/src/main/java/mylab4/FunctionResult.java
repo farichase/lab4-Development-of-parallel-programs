@@ -2,16 +2,16 @@ package mylab4;
 
 public class FunctionResult {
     private String packageID;
-    private String result;
+    private boolean result;
 
-    public FunctionResult(String packageID, String result) {
+    public FunctionResult(String packageID, boolean result) {
         this.packageID = packageID;
         this.result = result;
     }
     public String getPackageID() {
         return this.packageID;
     }
-    public String getResult() {
+    public boolean getResult() {
         return this.result;
     }
 }
