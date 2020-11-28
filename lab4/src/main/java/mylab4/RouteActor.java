@@ -34,7 +34,7 @@ public class RouteActor extends AbstractActor {
     }
     @Override
     public Receive createReceive() {
-        return ReceiveBuilder.create()
+        return receiveBuilder()
                 .match(StoreFunction.class, jsFunc -> funcHandler(jsFunc))
                 .match(String.class, msg -> storeActor.forward(msg, getContext()))
                 .build();
