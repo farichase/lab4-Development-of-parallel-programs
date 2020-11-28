@@ -10,6 +10,7 @@ public class Test implements Serializable {
     private final String expectedResult;
     private final Integer[] params;
     private StoreMessage onePackage;
+    
 
     @JsonCreator
     public Test(
