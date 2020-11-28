@@ -24,12 +24,13 @@ public class AkkaApp {
 
     private final static Timeout timeout = Timeout.create(Duration.ofSeconds(5));
     private static Route createRoute(ActorSystem system, ActorRef routeActor){
-        return route(get(() -> parameter( "packageID", key -> {
+        return route(
+                get(() -> parameter( "packageID", key -> {
                     Future<Object> res = Patterns.ask(routeActor, key, timeout);
                     return completeOKWithFuture(res, Jackson.marshaller());
                 }
         )).orElse(
-                
+                post(() -> )
         ));
     }
 
