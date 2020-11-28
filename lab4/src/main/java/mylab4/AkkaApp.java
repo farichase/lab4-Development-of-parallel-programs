@@ -56,6 +56,6 @@ public class AkkaApp {
                 ConnectHttp.toHost("localhost", PORT),
                 materializer
         );
-        System.out.println();
+        System.out.println("Server online at http://localhost:8080");
     }
 }
