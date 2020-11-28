@@ -15,7 +15,11 @@ public class TestExecutorActor extends AbstractActor {
                     ScriptEngine engine = new ScriptEngineManager().getEngineByName(ENGINE_NAME);
                     engine.eval(req.getJsScript());
                     Invocable invocable = (Invocable) engine;
-                    
+                    String res = invocable.invokeFunction(req.getFunctionName(), req.getParams().toArray()).toString();
+                    String answer = "";
+                    if (res.equals(req.))
+
+                    return new ;
                 })
     }
 }
