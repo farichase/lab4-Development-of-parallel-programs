@@ -4,7 +4,8 @@ import akka.actor.AbstractActor;
 
 public class TestExecutorActor extends AbstractActor {
     @Override
-    public Receive receiveBuilder(){
-        
+    public Receive createReceive(){
+        return receiveBuilder()
+                .match()
     }
 }
