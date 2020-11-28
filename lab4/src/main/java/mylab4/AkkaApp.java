@@ -31,8 +31,10 @@ public class AkkaApp {
                 }
         )).orElse(
                 post(() -> entity(
-
-                ))
+                    Jackson.unmarshaller(StoreFunction.class), msg -> {
+                        routeActor.tell(msg, ActorRef.noSender());
+                        return complete("");
+                    }))
         ));
     }
 
