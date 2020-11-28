@@ -10,6 +10,12 @@ import java.util.Map;
 
 public class StoreActor extends AbstractActor {
     private Map<String, ArrayList<Test>> store = new HashMap<>();
+    private FunctionResult printerID(String id) {
+        if (store.containsKey(id)){
+            
+        }
+        return new FunctionResult(id, true);
+    }
     @Override
     public Receive createReceive(){
         return receiveBuilder()
@@ -21,7 +27,7 @@ public class StoreActor extends AbstractActor {
                     }
                     store.get(packageId).add(test);
                 })
-                .match(String.class, s -> sender().tell(s, ActorRef.noSender()))
+                .match(String.class, id -> sender().tell(printerID(id), ActorRef.noSender()))
                 .build();
     }
     public static Props props() {
