@@ -14,4 +14,10 @@ public class FunctionResult {
     public boolean getResult() {
         return this.result;
     }
+    public void setPackageID() {
+        this.packageID = packageID;
+    }
+    public void setResult() {
+        this.result = result;
+    }
 }
