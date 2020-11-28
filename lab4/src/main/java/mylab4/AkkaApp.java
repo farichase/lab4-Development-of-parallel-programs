@@ -8,18 +8,22 @@ import akka.http.javadsl.Http;
 import akka.http.javadsl.model.HttpRequest;
 import akka.http.javadsl.model.HttpResponse;
 import akka.http.javadsl.server.Route;
+import akka.pattern.Patterns;
 import akka.stream.ActorMaterializer;
 import akka.stream.Materializer;
 import akka.stream.javadsl.Flow;
+
+import java.util.concurrent.Future;
 
 import static akka.http.javadsl.server.Directives.*;
 
 public class AkkaApp {
 
     private static Route createRoute(ActorSystem system, ActorRef routeActor){
-        return route(get(() -> parameter( "packageID", 
-
-        ) ));
+        return route(get(() -> parameter( "packageID", key -> {
+                    Future<Object> res = Patterns.ask(routeActor, key, )
+                }
+        )));
     }
 
     public static void main(String[] args){
