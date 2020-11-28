@@ -10,7 +10,6 @@ public class Test implements Serializable {
     private final String expectedResult;
     private final Integer[] params;
     private StoreMessage onePackage;
-    
 
     @JsonCreator
     public Test(
@@ -33,5 +32,8 @@ public class Test implements Serializable {
     }
     public StoreMessage getOnePackage(){
         return this.onePackage;
+    }
+    public void setStoreMessage(StoreMessage msg){
+        this.onePackage =
     }
 }
