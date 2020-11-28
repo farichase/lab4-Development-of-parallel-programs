@@ -4,7 +4,9 @@ import akka.NotUsed;
 import akka.actor.ActorRef;
 import akka.actor.ActorSystem;
 import akka.actor.Props;
+import akka.http.javadsl.ConnectHttp;
 import akka.http.javadsl.Http;
+import akka.http.javadsl.ServerBinding;
 import akka.http.javadsl.marshallers.jackson.Jackson;
 import akka.http.javadsl.model.HttpRequest;
 import akka.http.javadsl.model.HttpResponse;
@@ -48,6 +50,9 @@ public class AkkaApp {
         final Materializer materializer = ActorMaterializer.create(system);
         final Flow<HttpRequest, HttpResponse, NotUsed> flow =
                 createRoute(system, routeActor).flow(system, materializer);
-        final CompletionStage<>
+        final CompletionStage<ServerBinding> bindingCompletionStage = http.bindAndHandle(
+                flow,
+                ConnectHttp.toHost("localhost", )
+        )
     }
 }
