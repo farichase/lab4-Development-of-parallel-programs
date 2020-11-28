@@ -30,7 +30,9 @@ public class AkkaApp {
                     return completeOKWithFuture(res, Jackson.marshaller());
                 }
         )).orElse(
-                post(() -> )
+                post(() -> entity(
+
+                ))
         ));
     }
 
