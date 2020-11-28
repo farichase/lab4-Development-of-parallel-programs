@@ -1,6 +1,7 @@
 package mylab4;
 
 import akka.actor.AbstractActor;
+import akka.actor.ActorRef;
 import akka.actor.Props;
 
 import java.util.ArrayList;
@@ -20,7 +21,7 @@ public class StoreActor extends AbstractActor {
                     }
                     store.get(packageId).add(test);
                 })
-                .match(String.class, s -> sender().tell(s, self()))
+                .match(String.class, s -> sender().tell(s, ActorRef.noSender()))
                 .build();
     }
     public static Props props() {
