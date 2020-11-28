@@ -31,6 +31,9 @@ public class UnitTest {
     public String getTestName() {
         return this.testName;
     }
+    public String getExpectedResult() {
+        return this.expectedResult;
+    }
     public ArrayList<Integer> getParams(){
         return this.params;
     }
