@@ -20,15 +20,16 @@ public class RouteActor extends AbstractActor {
                         .props(Props.create(TestExecutorActor.class, storeActor))
         );
     }
-    private void funcHandler(StoreMessage jsFunc){
-        for (Test test : jsFunc.getTests()) {
-            test.
+    private void funcHandler(StoreFunction func){
+        for (Test test : func.getTests()) {
+            test.setFunc(func);
+            testExecutorActor.tell(test, ActorRef.noSender());
         }
     }
     @Override
     public Receive createReceive() {
         return ReceiveBuilder.create()
-                .match(StoreMessage.class, jsFunc -> funcHandler(jsFunc))
+                .match(StoreFunction.class, jsFunc -> funcHandler(jsFunc))
                 .match(String.class, msg -> storeActor.forward(msg, getContext()))
                 .build();
     }
