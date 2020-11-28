@@ -12,12 +12,14 @@ import akka.stream.ActorMaterializer;
 import akka.stream.Materializer;
 import akka.stream.javadsl.Flow;
 
+import static akka.http.javadsl.server.Directives.route;
+
 public class AkkaApp {
 
     private static Route createRoute(ActorSystem system, ActorRef routeActor){
-        return get(() -> parameter
-
-        );
+        return route(get(() -> parameter(
+                
+        ) ));
     }
 
     public static void main(String[] args){
