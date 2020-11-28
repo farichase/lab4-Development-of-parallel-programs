@@ -9,19 +9,16 @@ public class StoreFunction implements Serializable {
     private final String packageId;
     private final String jsScripts;
     private final String functionName;
-    private final List<Test> tests;
 
     @JsonCreator
     public StoreFunction(
             @JsonProperty("packageId") String packageId,
             @JsonProperty("jsScripts") String jsScripts,
-            @JsonProperty("functionName") String functionName,
-            @JsonProperty("tests") List<Test> tests
+            @JsonProperty("functionName") String functionName
     ){
         this.packageId = packageId;
         this.jsScripts = jsScripts;
         this.functionName = functionName;
-        this.tests = tests;
     }
     public String getPackageId() {
         return this.packageId;
@@ -31,8 +28,5 @@ public class StoreFunction implements Serializable {
     }
     public String getFunctionName() {
         return this.functionName;
-    }
-    public List<Test> getTests () {
-        return this.tests;
     }
 }
