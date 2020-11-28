@@ -57,5 +57,6 @@ public class AkkaApp {
                 materializer
         );
         System.out.println("Server online at http://localhost:8080");
+        
     }
 }
