@@ -10,7 +10,14 @@ public class UnitTest {
     public final String expectedResult;
     public final ArrayList<Integer> params;
 
-    public 
+    public UnitTest(String packageID, String jsScripts, String functionName,
+                    String testName, String expectedResult, ArrayList<Integer> params) {
+        this.packageID = packageID;
+        this.jsScripts = jsScripts;
+        this.functionName = functionName;
+        this.testName = testName;
+        this.expectedResult = expectedResult;
+    }
 
 }
 
