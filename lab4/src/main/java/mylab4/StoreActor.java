@@ -12,7 +12,7 @@ public class StoreActor extends AbstractActor {
     private Map<String, ArrayList<Test>> store = new HashMap<>();
     private FunctionResult printerID(String id) {
         if (store.containsKey(id)){
-            
+
         }
         return new FunctionResult(id, true);
     }
