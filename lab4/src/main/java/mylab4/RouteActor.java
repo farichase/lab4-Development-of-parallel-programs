@@ -28,7 +28,7 @@ public class RouteActor extends AbstractActor {
                                 func.getFunctionName(),
                                 func.getTests().get(i).getTestName(),
                                 func.getTests().get(i).getExpectedResult(),
-                            )
+                                func.getTests().get(i).getParams()), getSelf()
             );
         }
     }
