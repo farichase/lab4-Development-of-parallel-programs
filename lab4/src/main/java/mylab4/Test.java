@@ -9,7 +9,7 @@ public class Test implements Serializable {
     private final String testName;
     private final String expectedResult;
     private final Integer[] params;
-    private StoreFunction onePackage;
+    private StoreFunction func;
 
     @JsonCreator
     public Test(
@@ -30,10 +30,10 @@ public class Test implements Serializable {
     public Integer[] getParams() {
         return this.params;
     }
-    public StoreFunction getOnePackage(){
-        return this.onePackage;
+    public StoreFunction getFunc(){
+        return this.func;
     }
-    public void setStoreMessage(StoreFunction msg){
-        this.onePackage =
+    public void setFunc(StoreFunction func){
+        this.func = func;
     }
 }
