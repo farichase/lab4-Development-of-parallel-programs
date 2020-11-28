@@ -1,4 +1,7 @@
 package mylab4;
 
-public class TestExecutorActor {
+import akka.actor.AbstractActor;
+
+public class TestExecutorActor extends AbstractActor {
+    
 }
