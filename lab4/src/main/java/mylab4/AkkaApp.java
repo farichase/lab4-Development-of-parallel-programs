@@ -18,6 +18,7 @@ import akka.stream.javadsl.Flow;
 import akka.util.Timeout;
 import scala.concurrent.Future;
 
+import java.io.IOException;
 import java.time.Duration;
 import java.util.concurrent.CompletionStage;
 
@@ -43,7 +44,7 @@ public class AkkaApp {
         );
     }
 
-    public static void main(String[] args){
+    public static void main(String[] args) throws IOException {
         ActorSystem system = ActorSystem.create("akkalab4");
         ActorRef routeActor = system.actorOf(Props.create(RouteActor.class, system));
         final Http http = Http.get(system);
@@ -57,6 +58,7 @@ public class AkkaApp {
                 materializer
         );
         System.out.println("Server online at http://localhost:8080");
+        System.in.read();
         
     }
 }
