@@ -17,6 +17,7 @@ import akka.util.Timeout;
 import scala.concurrent.Future;
 
 import java.time.Duration;
+import java.util.concurrent.CompletionStage;
 
 import static akka.http.javadsl.server.Directives.*;
 
@@ -46,6 +47,7 @@ public class AkkaApp {
         final AkkaApp app = new AkkaApp();
         final Materializer materializer = ActorMaterializer.create(system);
         final Flow<HttpRequest, HttpResponse, NotUsed> flow =
-                createRoute(system, routeActor)
+                createRoute(system, routeActor).flow(system, materializer);
+        final CompletionStage<>
     }
 }
