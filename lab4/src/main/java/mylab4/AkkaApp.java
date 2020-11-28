@@ -12,12 +12,16 @@ import akka.stream.Materializer;
 import akka.stream.javadsl.Flow;
 
 public class AkkaApp {
+
+    private static Route createRoute()
+
     public static void main(String[] args){
         ActorSystem system = ActorSystem.create("akkalab4");
         ActorRef routeActor = system.actorOf(Props.create(RouteActor.class, system));
         final Http http = Http.get(system);
         final AkkaApp app = new AkkaApp();
         final Materializer materializer = ActorMaterializer.create(system);
-        final Flow<HttpRequest, HttpResponse, NotUsed> flow = app.
+        final Flow<HttpRequest, HttpResponse, NotUsed> flow =
+                createRoute()
     }
 }
