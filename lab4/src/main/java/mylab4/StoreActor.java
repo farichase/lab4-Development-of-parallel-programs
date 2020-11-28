@@ -3,11 +3,10 @@ package mylab4;
 import akka.actor.AbstractActor;
 import akka.actor.Props;
 
-import java.util.HashMap;
-import java.util.Map;
+import java.util.ArrayList;
 
 public class StoreActor extends AbstractActor {
-    private Map<String, Map<String, String>> store = new HashMap<>();
+    private Map<String, ArrayList<Test>> store = new HashMap<>();
     @Override
     public Receive createReceive(){
         return receiveBuilder()
@@ -15,7 +14,7 @@ public class StoreActor extends AbstractActor {
                 .match(Test.class, test -> {
                     String packageId = test.getOnePackage().getPackageId();
                     if (!this.store.containsKey(packageId)){
-                        HashMap<>() tests = new HashMap<>();
+                        ArrayList<Test> tests = new HashMap<>();
                         store.put(packageId, new HashMap<>());
                     }
                     store.get(packageId).put(test.getTestName(), test.getExpectedResult());
