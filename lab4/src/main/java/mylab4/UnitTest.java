@@ -5,6 +5,7 @@ public class UnitTest {
     public final String jsScripts;
     public final String functionName;
     public final String testName;
+    public final String expectedResult;
 
 }
 
