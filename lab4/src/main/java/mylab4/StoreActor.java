@@ -15,6 +15,7 @@ public class StoreActor extends AbstractActor {
                 .match(Test.class, test -> {
                     String packageId = test.getOnePackage().getPackageId();
                     if (!this.store.containsKey(packageId)){
+                        HashMap<>() tests = new HashMap<>();
                         store.put(packageId, new HashMap<>());
                     }
                     store.get(packageId).put(test.getTestName(), test.getExpectedResult());
