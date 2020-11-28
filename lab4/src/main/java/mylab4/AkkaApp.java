@@ -5,6 +5,7 @@ import akka.actor.ActorRef;
 import akka.actor.ActorSystem;
 import akka.actor.Props;
 import akka.http.javadsl.Http;
+import akka.http.javadsl.marshallers.jackson.Jackson;
 import akka.http.javadsl.model.HttpRequest;
 import akka.http.javadsl.model.HttpResponse;
 import akka.http.javadsl.server.Route;
@@ -25,9 +26,11 @@ public class AkkaApp {
     private static Route createRoute(ActorSystem system, ActorRef routeActor){
         return route(get(() -> parameter( "packageID", key -> {
                     Future<Object> res = Patterns.ask(routeActor, key, timeout);
-
+                    return completeOKWithFuture(res, Jackson.marshaller());
                 }
-        )));
+        )).orElse(
+                
+        ));
     }
 
     public static void main(String[] args){
