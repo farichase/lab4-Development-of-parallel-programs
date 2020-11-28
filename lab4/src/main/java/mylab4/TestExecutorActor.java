@@ -14,7 +14,8 @@ public class TestExecutorActor extends AbstractActor {
                 .match(UnitTest.class, req -> {
                     ScriptEngine engine = new ScriptEngineManager().getEngineByName(ENGINE_NAME);
                     engine.eval(req.getJsScript());
-                    Invocable 
+                    Invocable invocable = (Invocable) engine;
+                    
                 })
     }
 }
