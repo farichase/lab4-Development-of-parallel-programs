@@ -29,13 +29,14 @@ public class AkkaApp {
                     Future<Object> res = Patterns.ask(routeActor, key, timeout);
                     return completeOKWithFuture(res, Jackson.marshaller());
                 }
-        )).orElse(
+                )).orElse(
                 post(() -> entity(
                     Jackson.unmarshaller(StoreFunction.class), msg -> {
                         routeActor.tell(msg, ActorRef.noSender());
-                        return complete("");
-                    }))
-        ));
+                        return complete("Tests!");
+                    })
+                ))
+        );
     }
 
     public static void main(String[] args){
