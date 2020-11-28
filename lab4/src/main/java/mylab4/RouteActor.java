@@ -22,7 +22,7 @@ public class RouteActor extends AbstractActor {
     }
     private void funcHandler(StoreMessage jsFunc){
         for (Test test : jsFunc.getTests()) {
-
+            test.
         }
     }
     @Override
