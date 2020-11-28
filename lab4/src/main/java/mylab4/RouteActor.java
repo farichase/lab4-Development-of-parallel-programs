@@ -21,7 +21,9 @@ public class RouteActor extends AbstractActor {
         );
     }
     private void funcHandler(StoreFunction func){
-        for ()
+        for (Test test : func.getTests()) {
+            
+        }
     }
     @Override
     public Receive createReceive() {
