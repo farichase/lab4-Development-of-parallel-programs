@@ -17,7 +17,7 @@ public class UnitTest {
         this.functionName = functionName;
         this.testName = testName;
         this.expectedResult = expectedResult;
+        this.params = params;
     }
-
 }
 
