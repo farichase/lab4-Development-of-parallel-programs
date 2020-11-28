@@ -12,16 +12,20 @@ import akka.pattern.Patterns;
 import akka.stream.ActorMaterializer;
 import akka.stream.Materializer;
 import akka.stream.javadsl.Flow;
+import akka.util.Timeout;
+import scala.concurrent.Future;
 
-import java.util.concurrent.Future;
+import java.time.Duration;
 
 import static akka.http.javadsl.server.Directives.*;
 
 public class AkkaApp {
 
+    private final static Timeout timeout = Timeout.create(Duration.ofSeconds(5));
     private static Route createRoute(ActorSystem system, ActorRef routeActor){
         return route(get(() -> parameter( "packageID", key -> {
-                    Future<Object> res = Patterns.ask(routeActor, key, )
+                    Future<Object> res = Patterns.ask(routeActor, key, timeout);
+                    
                 }
         )));
     }
