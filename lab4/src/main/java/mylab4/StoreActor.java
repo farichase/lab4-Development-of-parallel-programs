@@ -4,6 +4,7 @@ import akka.actor.AbstractActor;
 import akka.actor.Props;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Map;
 
 public class StoreActor extends AbstractActor {
@@ -15,10 +16,11 @@ public class StoreActor extends AbstractActor {
                 .match(Test.class, test -> {
                     String packageId = test.getOnePackage().getPackageId();
                     if (!this.store.containsKey(packageId)){
-                        ArrayList<Test> tests = new HashMap<>();
-                        store.put(packageId, new HashMap<>());
+                        ArrayList<Test> tests = new ArrayList<>();
+                        tests.add(test);
+                        store.put(packageId, tests);
                     }
-                    store.get(packageId).put(test.getTestName(), test.getExpectedResult());
+                    store.get(packageId).add(test);
                 })
                 .match(String.class, s -> sender().tell(s, self()))
                 .build();
