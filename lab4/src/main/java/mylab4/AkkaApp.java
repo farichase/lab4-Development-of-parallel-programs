@@ -59,6 +59,6 @@ public class AkkaApp {
         );
         System.out.println("Server online at http://localhost:8080");
         System.in.read();
-        
+        bindingCompletionStage.thenCompose(ServerBinding::unbind).thenAccept()
     }
 }
