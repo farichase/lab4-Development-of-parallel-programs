@@ -26,6 +26,7 @@ import static akka.http.javadsl.server.Directives.*;
 public class AkkaApp {
 
     private final static Timeout timeout = Timeout.create(Duration.ofSeconds(5));
+    private final static int PORT = 8080;
     private static Route createRoute(ActorSystem system, ActorRef routeActor){
         return route(
                 get(() -> parameter( "packageID", key -> {
@@ -52,7 +53,9 @@ public class AkkaApp {
                 createRoute(system, routeActor).flow(system, materializer);
         final CompletionStage<ServerBinding> bindingCompletionStage = http.bindAndHandle(
                 flow,
-                ConnectHttp.toHost("localhost", )
-        )
+                ConnectHttp.toHost("localhost", PORT),
+                materializer
+        );
+        System.out.println();
     }
 }
