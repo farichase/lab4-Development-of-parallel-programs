@@ -8,13 +8,13 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class StoreActor extends AbstractActor {
-    private Map<String, ArrayList<Test>> store = new HashMap<>();
+    private Map<String, Map store = new HashMap<>();
     @Override
     public Receive createReceive(){
         return receiveBuilder()
                 .create()
-                .match(Test.class, test -> {
-                    String packageId = test.getOnePackage().getPackageId();
+                .match(StoreFunction.class, test -> {
+                    String packageId = test.getPackageId();
                     if (!this.store.containsKey(packageId)){
                         store.put(packageId, new ArrayList<>());
                     }
