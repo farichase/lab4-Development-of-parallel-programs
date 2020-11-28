@@ -4,6 +4,6 @@ public class UnitTest {
     public final String packageID;
     public final String jsScripts;
     public final String functionName;
-    public final String testNAme
+    public final String testName;
 
 }
