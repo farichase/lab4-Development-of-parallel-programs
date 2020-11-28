@@ -24,7 +24,8 @@ public class RouteActor extends AbstractActor {
         for (int i = 0; i < func.getTests().size(); i++) {
             testExecutorActor.tell(
                     new UnitTest(func.getFunctionName(),
-                            func.getTests().get(i))
+                                func.getTests().get(i).getTestName(),
+                                func.)
             );
         }
     }
