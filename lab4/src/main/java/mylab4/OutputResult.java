@@ -17,4 +17,10 @@ public class OutputResult {
     public Map<String, String> getRes() {
         return res;
     }
+    public void setId(String id) {
+        this.id = id;
+    }
+    public void setRes(Map<String, String> res) {
+        this.res = res;
+    }
 }
