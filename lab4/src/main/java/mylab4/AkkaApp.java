@@ -28,7 +28,7 @@ public class AkkaApp {
     private final static int PORT = 8080;
     private final static String PARAMETER_NAME = "packageId";
 
-    private static Route createRoute(ActorSystem system, ActorRef routeActor){
+    private static Route createRoute(ActorRef routeActor){
         return route(
                 get(() -> parameter( PARAMETER_NAME, key -> {
                     Future<Object> res = Patterns.ask(routeActor, key, TIMEOUT);
@@ -51,7 +51,7 @@ public class AkkaApp {
         final AkkaApp app = new AkkaApp();
         final Materializer materializer = ActorMaterializer.create(system);
         final Flow<HttpRequest, HttpResponse, NotUsed> flow =
-                app.createRoute(system, routeActor).flow(system, materializer);
+                app.createRoute(routeActor).flow(system, materializer);
         final CompletionStage<ServerBinding> bindingCompletionStage = http.bindAndHandle(
                 flow,
                 ConnectHttp.toHost("localhost", PORT),
