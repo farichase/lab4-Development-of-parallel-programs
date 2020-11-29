@@ -10,10 +10,10 @@ import java.util.Map;
 public class StoreActor extends AbstractActor {
     private Map<String, ArrayList<String>> store = new HashMap<>();
     private FunctionResult printerID(String id) {
-        if (!store.containsKey(id)){
+        if (store.containsKey(id)){
             ArrayList<String> funcArray = store.get(id);
-            for (String item : funcArray) {
-                return new FunctionResult(id, item);
+            for (int i = 0; i < funcArray.size(); i++) {
+                return new FunctionResult(id, funcArray.get(i));
             }
         }
         return new FunctionResult(id, "no tests");
