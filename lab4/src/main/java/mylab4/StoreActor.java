@@ -35,7 +35,7 @@ public class StoreActor extends AbstractActor {
                             }
                             funcArray.add(item.getResult());
                             store.put(item.getPackageID(), funcArray);
-                            System.out.println(store);
+                            System.out.println(00);
                 })
                 .match(String.class, id -> sender().tell(printerID(id), ActorRef.noSender()))
                 .build();
