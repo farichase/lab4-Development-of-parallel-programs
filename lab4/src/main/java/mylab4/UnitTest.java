@@ -3,24 +3,24 @@ package mylab4;
 import java.util.ArrayList;
 
 public class UnitTest {
-    private final String packageID;
+    private final String packageId;
     private final String jsScript;
     private final String functionName;
     private final String testName;
     private final String expectedResult;
     private final ArrayList<Integer> params;
 
-    public UnitTest(String packageID, String jsScript, String functionName,
+    public UnitTest(String packageId, String jsScript, String functionName,
                     String testName, String expectedResult, ArrayList<Integer> params) {
-        this.packageID = packageID;
+        this.packageId = packageId;
         this.jsScript = jsScript;
         this.functionName = functionName;
         this.testName = testName;
         this.expectedResult = expectedResult;
         this.params = params;
     }
-    public String getPackageID(){
-        return this.packageID;
+    public String getPackageId(){
+        return this.packageId;
     }
     public String getJsScript() {
         return this.jsScript;
