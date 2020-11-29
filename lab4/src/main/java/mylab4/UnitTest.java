@@ -37,7 +37,7 @@ public class UnitTest {
     public ArrayList<Integer> getParams(){
         return this.params;
     }
-    public ArrayList<UnitTest> funcHandler(StoreFunction func){
+    public static ArrayList<UnitTest> funcHandler(StoreFunction func){
         ArrayList<UnitTest> tests = new ArrayList<>();
         for (int i = 0; i < func.getTests().size(); i++) {
             tests.add(

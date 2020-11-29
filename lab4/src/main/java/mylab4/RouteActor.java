@@ -1,5 +1,5 @@
 package mylab4;
-
+/*
 import akka.actor.AbstractActor;
 import akka.actor.ActorRef;
 import akka.actor.ActorSystem;
@@ -30,4 +30,4 @@ public class RouteActor extends AbstractActor {
                 .match(String.class, msg -> storeActor.forward(msg, getContext()))
                 .build();
     }
-}
+}*/
