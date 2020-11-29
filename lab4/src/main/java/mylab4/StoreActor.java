@@ -22,7 +22,6 @@ public class StoreActor extends AbstractActor {
     }
     @Override
     public Receive createReceive(){
-        System.out.println(111);
         return receiveBuilder()
                 .create()
                 .match(
@@ -36,6 +35,7 @@ public class StoreActor extends AbstractActor {
                             }
                             funcArray.add(item.getResult());
                             store.put(item.getPackageID(), funcArray);
+                            System.out.println(store);
                 })
                 .match(String.class, id -> sender().tell(printerID(id), ActorRef.noSender()))
                 .build();
