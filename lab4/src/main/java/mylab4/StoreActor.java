@@ -9,12 +9,15 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class StoreActor extends AbstractActor {
-    private Map<String, ArrayList<Test>> store = new HashMap<>();
+    private Map<String, ArrayList<String>> store = new HashMap<>();
     private FunctionResult printerID(String id) {
         if (store.containsKey(id)){
-
+            ArrayList<String> funcArray = store.get(id);
+            for (String item : funcArray) {
+                return new FunctionResult(id, item);
+            }
         }
-        return new FunctionResult(id, true);
+        return new FunctionResult(id, "no tests");
     }
     @Override
     public Receive createReceive(){
