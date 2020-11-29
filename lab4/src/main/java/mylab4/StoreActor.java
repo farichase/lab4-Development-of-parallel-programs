@@ -13,11 +13,9 @@ public class StoreActor extends AbstractActor {
         if (store.containsKey(id)){
             ArrayList<String> funcArray = store.get(id);
             for (int i = 0; i < funcArray.size(); i++) {
-                System.out.println(8);
                 return new FunctionResult(id, funcArray.get(i));
             }
         }
-        System.out.println(7);
         return new FunctionResult(id, "no tests");
     }
     @Override
