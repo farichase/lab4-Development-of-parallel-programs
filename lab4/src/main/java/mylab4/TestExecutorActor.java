@@ -8,8 +8,8 @@ import javax.script.ScriptEngineManager;
 
 public class TestExecutorActor extends AbstractActor {
     private static final String ENGINE_NAME = "nashorn";
-    private static final boolean FAIL = false;
-    private static final boolean SUCCESS = true;
+    private static final String FAIL = "fail";
+    private static final String SUCCESS = "success";
 
     @Override
     public Receive createReceive(){
@@ -19,7 +19,7 @@ public class TestExecutorActor extends AbstractActor {
                     engine.eval(req.getJsScript());
                     Invocable invocable = (Invocable) engine;
                     String res = invocable.invokeFunction(req.getFunctionName(), req.getParams().toArray()).toString();
-                    boolean answer;
+                    String answer;
                     if (res.equals(req.getExpectedResult())) answer = SUCCESS;
                     else answer = FAIL;
                     sender().tell(new FunctionResult(req.getPackageID(), answer), self());
