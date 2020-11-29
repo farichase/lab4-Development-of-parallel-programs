@@ -11,11 +11,16 @@ import scala.concurrent.Future;
 public class RouteActor extends AbstractActor {
     private final int NR = 10;
     private final int TIMEOUT = 4000;
-    private ActorRef storeActor = getContext().actorOf(Props.create(StoreActor.class), "store");;
-    private ActorRef testExecutorActor = getContext().actorOf(
+    private ActorRef storeActor;
+    private ActorRef testExecutorActor;
+
+    public RouteActor(ActorSystem system) {
+        this.storeActor = getContext().actorOf(Props.create(StoreActor.class), "store");
+        this.testExecutorActor = system.actorOf(
                 new RoundRobinPool(NR)
                         .props(Props.create(TestExecutorActor.class))
         );
+    }
     private void funcHandler(StoreFunction func){
         for (int i = 0; i < func.getTests().size(); i++) {
             testExecutorActor.tell(
