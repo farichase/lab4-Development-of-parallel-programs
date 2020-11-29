@@ -12,12 +12,14 @@ import akka.http.javadsl.model.HttpRequest;
 import akka.http.javadsl.model.HttpResponse;
 import akka.http.javadsl.server.Route;
 import akka.pattern.Patterns;
+import akka.routing.RoundRobinPool;
 import akka.stream.ActorMaterializer;
 import akka.stream.Materializer;
 import akka.stream.javadsl.Flow;
 import scala.concurrent.Future;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.concurrent.CompletionStage;
 
 import static akka.http.javadsl.server.Directives.*;
@@ -28,16 +30,16 @@ public class AkkaApp {
     private final static int PORT = 8080;
     private final static String PARAMETER_NAME = "packageId";
 
-    private static Route createRoute(ActorRef routeActor){
+    private static Route createRoute(ActorRef storeActor, ActorRef testExecutorActor){
         return route(
                 get(() -> parameter( PARAMETER_NAME, key -> {
-                    Future<Object> res = Patterns.ask(routeActor, key, TIMEOUT);
+                    Future<Object> res = Patterns.ask(storeActor, key, TIMEOUT);
                     return completeOKWithFuture(res, Jackson.marshaller());
                 }
                 )),
                 post(() -> entity(
                     Jackson.unmarshaller(StoreFunction.class), msg -> {
-                        routeActor.tell(msg, ActorRef.noSender());
+                        ArrayList<UnitTest> tests = UnitTest
                         return complete("Success!");
                     })
                 )
@@ -46,12 +48,16 @@ public class AkkaApp {
 
     public static void main(String[] args) throws IOException {
         ActorSystem system = ActorSystem.create("akkalab4");
-        ActorRef routeActor = system.actorOf(Props.create(RouteActor.class, system));
+        ActorRef storeActor = system.actorOf(Props.create(StoreActor.class), "store");
+        ActorRef testExecutorActor = system.actorOf(
+                new RoundRobinPool(5)
+                        .props(Props.create(TestExecutorActor.class))
+        );
         final Http http = Http.get(system);
         final AkkaApp app = new AkkaApp();
         final Materializer materializer = ActorMaterializer.create(system);
         final Flow<HttpRequest, HttpResponse, NotUsed> flow =
-                app.createRoute(routeActor).flow(system, materializer);
+                app.createRoute(storeActor, testExecutorActor).flow(system, materializer);
         final CompletionStage<ServerBinding> bindingCompletionStage = http.bindAndHandle(
                 flow,
                 ConnectHttp.toHost("localhost", PORT),
