@@ -5,13 +5,9 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import java.util.ArrayList;
 
 public class StoreFunction {
-    @JsonProperty("packageId")
     private final String packageId;
-    @JsonProperty("jsScript")
     private final String jsScripts;
-    @JsonProperty("functionName")
     private final String functionName;
-    @JsonProperty("tests")
     private final ArrayList<Test> tests;
 
     @JsonCreator
