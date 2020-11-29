@@ -11,6 +11,7 @@ import java.util.Map;
 public class StoreActor extends AbstractActor {
     private Map<String, Map<String, String>> store = new HashMap<>();
     private FunctionResult printerID(String id) {
+        return new FunctionResult(id, store.get(id).get(0), store.get(id).get(1));
     }
     @Override
     public Receive createReceive(){
@@ -23,7 +24,7 @@ public class StoreActor extends AbstractActor {
                             }
                             store.get(item.getPackageID()).put(item.getTestName(), item.getResult());
                 })
-                .match(String.class, id -> sender().tell(printerID(id), ActorRef.noSender()))
+                .match(String.class, id -> sender().tell(printerID(id), self()))
                 .build();
     }
 }
