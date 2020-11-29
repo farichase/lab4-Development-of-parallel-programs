@@ -21,7 +21,7 @@ public class StoreActor extends AbstractActor {
                             if (!store.containsKey(item.getPackageID())) {
                                 store.put(item.getPackageID(), new HashMap<>());
                             }
-                            store.get(item.getPackageID()).put(item.);
+                            store.get(item.getPackageID()).put(item.getTestName(), item.getResult());
                 })
                 .match(String.class, id -> sender().tell(printerID(id), ActorRef.noSender()))
                 .build();
