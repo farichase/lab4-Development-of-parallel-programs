@@ -30,7 +30,7 @@ public class StoreActor extends AbstractActor {
                             } else {
                                 funcArray = new ArrayList<>();
                             }
-                            System.out.println(item.getPackageID());
+                            System.out.println(11);
                             funcArray.add(item.getResult());
                             store.put(item.getPackageID(), funcArray);
                 })
