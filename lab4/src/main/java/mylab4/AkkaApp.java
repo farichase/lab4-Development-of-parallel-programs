@@ -26,18 +26,21 @@ public class AkkaApp {
 
     private final static int TIMEOUT = 4000;
     private final static int PORT = 8080;
+    private final static String PARAMETER_NAME = "packageId";
+
     private static Route createRoute(ActorSystem system, ActorRef routeActor){
-        return get(() -> parameter( "packageID", key -> {
+        return route(
+                get(() -> parameter( PARAMETER_NAME, key -> {
                     Future<Object> res = Patterns.ask(routeActor, key, TIMEOUT);
                     return completeOKWithFuture(res, Jackson.marshaller());
                 }
-                )).orElse(
+                )),
                 post(() -> entity(
                     Jackson.unmarshaller(StoreFunction.class), msg -> {
                         routeActor.tell(msg, ActorRef.noSender());
-                        return complete("Tests!");
+                        return complete("Success!");
                     }))
-        );
+        ));
     }
 
     public static void main(String[] args) throws IOException {
