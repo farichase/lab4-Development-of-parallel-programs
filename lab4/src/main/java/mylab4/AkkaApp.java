@@ -39,8 +39,9 @@ public class AkkaApp {
                     Jackson.unmarshaller(StoreFunction.class), msg -> {
                         routeActor.tell(msg, ActorRef.noSender());
                         return complete("Success!");
-                    }))
-        ));
+                    })
+                )
+        );
     }
 
     public static void main(String[] args) throws IOException {
