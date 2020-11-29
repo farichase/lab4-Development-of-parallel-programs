@@ -2,6 +2,7 @@ package mylab4;
 
 import akka.actor.AbstractActor;
 import akka.actor.ActorRef;
+import akka.japi.pf.ReceiveBuilder;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -20,7 +21,7 @@ public class StoreActor extends AbstractActor {
     }
     @Override
     public Receive createReceive(){
-        return receiveBuilder().create()
+        return ReceiveBuilder().create()
                 .match(
                         FunctionResult.class,
                         item -> {
