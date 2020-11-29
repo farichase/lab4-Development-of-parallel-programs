@@ -53,8 +53,7 @@ public class AkkaApp {
         ActorSystem system = ActorSystem.create("akkalab4");
         ActorRef storeActor = system.actorOf(Props.create(StoreActor.class), "store");
         ActorRef testExecutorActor = system.actorOf(
-                new RoundRobinPool(5)
-                        .props(Props.create(TestExecutorActor.class))
+                new RoundRobinPool(5).props(Props.create(TestExecutorActor.class))
         );
         final Http http = Http.get(system);
         final AkkaApp app = new AkkaApp();
