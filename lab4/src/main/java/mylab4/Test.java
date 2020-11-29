@@ -10,7 +10,6 @@ public class Test implements Serializable {
     private final String testName;
     private final String expectedResult;
     private final ArrayList<Integer> params;
-    private StoreFunction func;
 
     @JsonCreator
     public Test(
@@ -30,11 +29,5 @@ public class Test implements Serializable {
     }
     public ArrayList<Integer> getParams() {
         return this.params;
-    }
-    public StoreFunction getFunc(){
-        return this.func;
-    }
-    public void setFunc(StoreFunction func){
-        this.func = func;
     }
 }
