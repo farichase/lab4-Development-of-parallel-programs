@@ -23,7 +23,7 @@ public class TestExecutorActor extends AbstractActor {
                     if (res.equals(req.getExpectedResult())) answer = SUCCESS;
                     else answer = FAIL;
                     System.out.println("Expected result: " + req.getExpectedResult() + "; received result: " + res + " :" + answer);
-                    sender().tell(new FunctionResult(req.getPackageId(), answer), self());
+                    sender().tell(new FunctionResult(req.getPackageId(), req.getTestName(), answer), self());
                 })
                 .build();
     }
