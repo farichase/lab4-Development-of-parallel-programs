@@ -16,7 +16,7 @@ public class RouteActor extends AbstractActor {
         this.storeActor = system.actorOf(StoreActor.props(), "store");
         this.testExecutorActor = system.actorOf(
                 new RoundRobinPool(NR)
-                        .props(Props.create(TestExecutorActor.class, storeActor))
+                        .props(Props.create(TestExecutorActor.class))
         );
     }
     private void funcHandler(StoreFunction func){
