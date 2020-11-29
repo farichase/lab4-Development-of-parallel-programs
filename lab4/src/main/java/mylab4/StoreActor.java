@@ -11,13 +11,6 @@ import java.util.Map;
 public class StoreActor extends AbstractActor {
     private Map<String, Map<String, String>> store = new HashMap<>();
     private FunctionResult printerID(String id) {
-        if (store.containsKey(id)){
-            ArrayList<String> funcArray = store.get(id);
-            for (int i = 0; i < funcArray.size(); i++) {
-                return new FunctionResult(id, funcArray.get(i));
-            }
-        }
-        return new FunctionResult(id, "no tests");
     }
     @Override
     public Receive createReceive(){
