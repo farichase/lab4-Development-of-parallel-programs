@@ -15,11 +15,11 @@ public class RouteActor extends AbstractActor {
     private ActorRef testExecutorActor;
 
     public RouteActor(ActorSystem system) {
-        this.storeActor = system.actorOf(StoreActor.props(), "store");
         this.testExecutorActor = system.actorOf(
                 new RoundRobinPool(NR)
                         .props(Props.create(TestExecutorActor.class))
         );
+        this.storeActor = system.actorOf(StoreActor.props(), "store");
     }
     private void funcHandler(StoreFunction func){
         for (int i = 0; i < func.getTests().size(); i++) {
