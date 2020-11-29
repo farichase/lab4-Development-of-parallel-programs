@@ -24,10 +24,14 @@ public class StoreActor extends AbstractActor {
                 .match(
                         FunctionResult.class,
                         item -> {
-                            if (!store.containsKey(item.getPackageID())) {
-                                store.put(item.getPackageID(), new ArrayList<>());
+                            ArrayList<String> funcArray;
+                            if (store.containsKey(item.getPackageID())) {
+                                funcArray = store.get(item.getPackageID());
+                            } else {
+                                funcArray = new ArrayList<>();
                             }
-                            store.get(item.getPackageID()).add()
+                            funcArray.add(item.getResult());
+                            store.put(item.getPackageID(), funcArray);
                 })
                 .match(String.class, id -> sender().tell(printerID(id), ActorRef.noSender()))
                 .build();
