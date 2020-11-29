@@ -20,17 +20,18 @@ public class StoreActor extends AbstractActor {
     }
     @Override
     public Receive createReceive(){
+        System.out.println(11);
         return receiveBuilder()
                 .match(
                         FunctionResult.class,
                         item -> {
+                            System.out.println(11);
                             ArrayList<String> funcArray;
                             if (store.containsKey(item.getPackageID())) {
                                 funcArray = store.get(item.getPackageID());
                             } else {
                                 funcArray = new ArrayList<>();
                             }
-                            System.out.println(11);
                             funcArray.add(item.getResult());
                             store.put(item.getPackageID(), funcArray);
                 })
