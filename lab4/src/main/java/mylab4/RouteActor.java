@@ -35,7 +35,6 @@ public class RouteActor extends AbstractActor {
     }
     @Override
     public Receive createReceive() {
-        System.out.println("route");
         return receiveBuilder()
                 .match(StoreFunction.class, jsFunc -> funcHandler(jsFunc))
                 .match(String.class, id ->{
