@@ -28,7 +28,6 @@ public class AkkaApp {
     private final static int PORT = 8080;
     private static Route createRoute(ActorSystem system, ActorRef routeActor){
         return get(() -> parameter( "packageID", key -> {
-                    System.out.println(00);
                     Future<Object> res = Patterns.ask(routeActor, key, TIMEOUT);
                     return completeOKWithFuture(res, Jackson.marshaller());
                 }
