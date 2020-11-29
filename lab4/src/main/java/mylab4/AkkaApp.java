@@ -29,24 +29,22 @@ public class AkkaApp {
     private final static Timeout timeout = Timeout.create(Duration.ofSeconds(5));
     private final static int PORT = 8080;
     private static Route createRoute(ActorSystem system, ActorRef routeActor){
-        return route(
-                get(() -> parameter( "packageID", key -> {
+        return get(() -> parameter( "packageID", key -> {
                     Future<Object> res = Patterns.ask(routeActor, key, timeout);
                     return completeOKWithFuture(res, Jackson.marshaller());
                 }
-                )),
+                )).orElse(
                 post(() -> entity(
                     Jackson.unmarshaller(StoreFunction.class), msg -> {
                         routeActor.tell(msg, ActorRef.noSender());
                         return complete("Tests!");
-                    })
-                )
+                    }))
         );
     }
 
     public static void main(String[] args) throws IOException {
         ActorSystem system = ActorSystem.create("akkalab4");
-        ActorRef routeActor = system.actorOf(Props.create(RouteActor.class, system));
+        ActorRef routeActor = system.actorOf(Props.create(RouteActor.class));
         final Http http = Http.get(system);
         final AkkaApp app = new AkkaApp();
         final Materializer materializer = ActorMaterializer.create(system);
