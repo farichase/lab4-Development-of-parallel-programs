@@ -14,10 +14,10 @@ public class StoreActor extends AbstractActor {
         if (store.containsKey(id)){
             ArrayList<String> funcArray = store.get(id);
             for (String item : funcArray) {
+                System.out.println(11);
                 return new FunctionResult(id, item);
             }
         }
-        System.out.println(11);
         return new FunctionResult(id, "no tests");
     }
     @Override
