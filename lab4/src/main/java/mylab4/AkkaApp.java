@@ -26,7 +26,7 @@ import static akka.http.javadsl.server.Directives.*;
 
 public class AkkaApp {
 
-    private final static Timeout timeout = Timeout.create(Duration.ofSeconds(5));
+    private final static int timeout = 4000;
     private final static int PORT = 8080;
     private static Route createRoute(ActorSystem system, ActorRef routeActor){
         return get(() -> parameter( "packageID", key -> {
