@@ -22,7 +22,6 @@ public class StoreActor extends AbstractActor {
     }
     @Override
     public Receive createReceive(){
-        System.out.println(121);
         return receiveBuilder()
                 .match(
                         FunctionResult.class,
