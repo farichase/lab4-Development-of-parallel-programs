@@ -37,5 +37,8 @@ public class UnitTest {
     public ArrayList<Integer> getParams(){
         return this.params;
     }
+    public ArrayList<UnitTest> funcHandler(){
+        
+    }
 }
 
