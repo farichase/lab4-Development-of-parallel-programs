@@ -10,6 +10,7 @@ import java.util.Map;
 public class StoreActor extends AbstractActor {
     private Map<String, ArrayList<String>> store = new HashMap<>();
     private FunctionResult printerID(String id) {
+        System.out.println(store);
         if (store.containsKey(id)){
             ArrayList<String> funcArray = store.get(id);
             for (int i = 0; i < funcArray.size(); i++) {
@@ -30,6 +31,7 @@ public class StoreActor extends AbstractActor {
                             } else {
                                 funcArray = new ArrayList<>();
                             }
+                            System.out.println();
                             funcArray.add(item.getResult());
                             store.put(item.getPackageID(), funcArray);
                 })
