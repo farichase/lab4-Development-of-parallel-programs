@@ -2,7 +2,6 @@ package mylab4;
 
 import akka.actor.AbstractActor;
 import akka.actor.ActorRef;
-import akka.actor.Props;
 
 import java.util.ArrayList;
 import java.util.HashMap;
