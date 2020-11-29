@@ -10,7 +10,6 @@ import scala.concurrent.Future;
 
 public class RouteActor extends AbstractActor {
     private final int NR = 10;
-    private final int TIMEOUT = 4000;
     private ActorRef storeActor;
     private ActorRef testExecutorActor;
 
