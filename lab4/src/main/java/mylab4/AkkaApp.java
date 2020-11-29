@@ -42,7 +42,7 @@ public class AkkaApp {
 
     public static void main(String[] args) throws IOException {
         ActorSystem system = ActorSystem.create("akkalab4");
-        ActorRef routeActor = system.actorOf(Props.create(RouteActor.class, system));
+        ActorRef routeActor = system.actorOf(Props.create(RouteActor.class));
         final Http http = Http.get(system);
         final AkkaApp app = new AkkaApp();
         final Materializer materializer = ActorMaterializer.create(system);
