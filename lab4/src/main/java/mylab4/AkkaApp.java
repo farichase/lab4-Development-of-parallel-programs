@@ -26,8 +26,9 @@ import static akka.http.javadsl.server.Directives.*;
 
 public class AkkaApp {
 
-    private final static int TIMEOUT = 4000;
+    private final static int TIMEOUT = 5000;
     private final static int PORT = 8080;
+    private final static int NR = 5;
     private final static String PARAMETER_NAME = "packageId";
 
     private static Route createRoute(ActorRef storeActor, ActorRef testExecutorActor){
@@ -53,7 +54,7 @@ public class AkkaApp {
         ActorSystem system = ActorSystem.create("akkalab4");
         ActorRef storeActor = system.actorOf(Props.create(StoreActor.class), "store");
         ActorRef testExecutorActor = system.actorOf(
-                new RoundRobinPool(5).props(Props.create(TestExecutorActor.class))
+                new RoundRobinPool(NR).props(Props.create(TestExecutorActor.class))
         );
         final Http http = Http.get(system);
         final AkkaApp app = new AkkaApp();
