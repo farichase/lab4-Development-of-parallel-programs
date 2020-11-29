@@ -6,12 +6,11 @@ import akka.actor.ActorSystem;
 import akka.actor.Props;
 import akka.pattern.Patterns;
 import akka.routing.RoundRobinPool;
-import org.omg.CORBA.TIMEOUT;
 import scala.concurrent.Future;
 
 public class RouteActor extends AbstractActor {
     private final int NR = 10;
-
+    private final int TIMEOUT = 4000;
     private ActorRef storeActor;
     private ActorRef testExecutorActor;
 
@@ -36,6 +35,7 @@ public class RouteActor extends AbstractActor {
     }
     @Override
     public Receive createReceive() {
+        System.out.println("route");
         return receiveBuilder()
                 .match(StoreFunction.class, jsFunc -> funcHandler(jsFunc))
                 .match(String.class, id ->{
