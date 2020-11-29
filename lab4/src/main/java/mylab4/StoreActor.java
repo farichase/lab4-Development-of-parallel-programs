@@ -27,6 +27,7 @@ public class StoreActor extends AbstractActor {
                 .match(
                         FunctionResult.class,
                         item -> {
+                            System.out.println(00);
                             ArrayList<String> funcArray;
                             if (store.containsKey(item.getPackageID())) {
                                 funcArray = store.get(item.getPackageID());
@@ -35,7 +36,6 @@ public class StoreActor extends AbstractActor {
                             }
                             funcArray.add(item.getResult());
                             store.put(item.getPackageID(), funcArray);
-                            System.out.println(00);
                 })
                 .match(String.class, id -> sender().tell(printerID(id), ActorRef.noSender()))
                 .build();
