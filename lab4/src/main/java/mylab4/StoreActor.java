@@ -23,12 +23,17 @@ public class StoreActor extends AbstractActor {
     public Receive createReceive(){
         return receiveBuilder()
                 .create()
-                .match(Test.class, test -> {
-                    String packageId = test.getFunc().getPackageId();
-                    if (!this.store.containsKey(packageId)){
-                        store.put(packageId, new ArrayList<>());
-                    }
-                    store.get(packageId).add(test);
+                .match(
+                        FunctionResult.class,
+                        item -> {
+                            ArrayList<String> funcArray;
+                            if (store.containsKey(item.getPackageID())) {
+                                funcArray = store.get(item.getPackageID());
+                            } else {
+                                funcArray = new ArrayList<>();
+                            }
+                            funcArray.add(item.getResult());
+                            store.put(item.getPackageID(), funcArray);
                 })
                 .match(String.class, id -> sender().tell(printerID(id), ActorRef.noSender()))
                 .build();
