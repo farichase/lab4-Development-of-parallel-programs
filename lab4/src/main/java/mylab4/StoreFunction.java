@@ -2,13 +2,12 @@ package mylab4;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import java.io.Serializable;
 import java.util.ArrayList;
 
 public class StoreFunction {
     @JsonProperty("packageId")
     private final String packageId;
-    @JsonProperty("jsScripts")
+    @JsonProperty("jsScript")
     private final String jsScripts;
     @JsonProperty("functionName")
     private final String functionName;
@@ -18,7 +17,7 @@ public class StoreFunction {
     @JsonCreator
     public StoreFunction(
             @JsonProperty("packageId") String packageId,
-            @JsonProperty("jsScripts") String jsScripts,
+            @JsonProperty("jsScript") String jsScripts,
             @JsonProperty("functionName") String functionName,
             @JsonProperty("tests") ArrayList<Test> tests
     ){
