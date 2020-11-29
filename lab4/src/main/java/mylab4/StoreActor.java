@@ -8,8 +8,8 @@ import java.util.Map;
 
 public class StoreActor extends AbstractActor {
     private Map<String, Map<String, String>> store = new HashMap<>();
-    private FunctionResult printerID(String id) {
-        return new FunctionResult(id, store.get(id).get(0), store.get(id).get(1));
+    private OutputResult printerID(String id) {
+        return new OutputResult(id, store.get(id));
     }
     @Override
     public Receive createReceive(){
