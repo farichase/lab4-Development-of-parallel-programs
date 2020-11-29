@@ -4,7 +4,10 @@ import akka.actor.AbstractActor;
 import akka.actor.ActorRef;
 import akka.actor.ActorSystem;
 import akka.actor.Props;
+import akka.pattern.Patterns;
 import akka.routing.RoundRobinPool;
+import org.omg.CORBA.TIMEOUT;
+import scala.concurrent.Future;
 
 public class RouteActor extends AbstractActor {
     private final int NR = 10;
@@ -35,7 +38,10 @@ public class RouteActor extends AbstractActor {
     public Receive createReceive() {
         return receiveBuilder()
                 .match(StoreFunction.class, jsFunc -> funcHandler(jsFunc))
-                .match(String.class, msg -> storeActor.forward(msg, getContext()))
+                .match(String.class, id ->{
+                    Future<Object> res = Patterns.ask(storeActor, id, TIMEOUT);
+                    getSender().tell(res, self());
+                })
                 .build();
     }
 }
