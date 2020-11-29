@@ -15,7 +15,6 @@ public class TestExecutorActor extends AbstractActor {
     public Receive createReceive(){
         return receiveBuilder()
                 .match(UnitTest.class, req -> {
-                    System.out.println(99);
                     ScriptEngine engine = new ScriptEngineManager().getEngineByName(ENGINE_NAME);
                     engine.eval(req.getJsScript());
                     Invocable invocable = (Invocable) engine;
