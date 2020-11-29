@@ -5,7 +5,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import java.io.Serializable;
 import java.util.ArrayList;
 
-public class StoreFunction implements Serializable {
+public class StoreFunction {
     @JsonProperty("packageId")
     private final String packageId;
     @JsonProperty("jsScripts")
