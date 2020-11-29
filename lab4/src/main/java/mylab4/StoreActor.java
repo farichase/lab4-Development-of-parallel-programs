@@ -9,7 +9,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class StoreActor extends AbstractActor {
-    private Map<String, ArrayList<String>> store = new HashMap<>();
+    private Map<String, Map<String, String>> store = new HashMap<>();
     private FunctionResult printerID(String id) {
         if (store.containsKey(id)){
             ArrayList<String> funcArray = store.get(id);
@@ -25,14 +25,10 @@ public class StoreActor extends AbstractActor {
                 .match(
                         FunctionResult.class,
                         item -> {
-                            ArrayList<String> funcArray;
-                            if (store.containsKey(item.getPackageID())) {
-                                funcArray = store.get(item.getPackageID());
-                            } else {
-                                funcArray = new ArrayList<>();
+                            if (!store.containsKey(item.getPackageID())) {
+                                store.put(item.getPackageID(), new HashMap<>());
                             }
-                            funcArray.add(item.getResult());
-                            store.put(item.getPackageID(), funcArray);
+                            store.get(item.getPackageID()).put(item.);
                 })
                 .match(String.class, id -> sender().tell(printerID(id), ActorRef.noSender()))
                 .build();
