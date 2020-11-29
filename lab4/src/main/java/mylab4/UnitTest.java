@@ -38,7 +38,18 @@ public class UnitTest {
         return this.params;
     }
     public ArrayList<UnitTest> funcHandler(StoreFunction func){
-
+        ArrayList<UnitTest> tests = new ArrayList<>();
+        for (int i = 0; i < func.getTests().size(); i++) {
+            tests.add(
+                    new UnitTest(func.getPackageId(),
+                            func.getJsScripts(),
+                            func.getFunctionName(),
+                            func.getTests().get(i).getTestName(),
+                            func.getTests().get(i).getExpectedResult(),
+                            func.getTests().get(i).getParams())
+            );
+        }
+        return tests;
     }
 }
 

@@ -39,7 +39,7 @@ public class AkkaApp {
                 )),
                 post(() -> entity(
                     Jackson.unmarshaller(StoreFunction.class), msg -> {
-                        ArrayList<UnitTest> tests = UnitTest
+                        ArrayList<UnitTest> tests = UnitTest.funcHandler()
                         return complete("Success!");
                     })
                 )

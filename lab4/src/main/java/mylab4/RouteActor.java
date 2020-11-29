@@ -21,16 +21,7 @@ public class RouteActor extends AbstractActor {
         );
     }
     private void funcHandler(StoreFunction func){
-        for (int i = 0; i < func.getTests().size(); i++) {
-            testExecutorActor.tell(
-                    new UnitTest(func.getPackageId(),
-                                func.getJsScripts(),
-                                func.getFunctionName(),
-                                func.getTests().get(i).getTestName(),
-                                func.getTests().get(i).getExpectedResult(),
-                                func.getTests().get(i).getParams()), getSelf()
-            );
-        }
+
     }
     @Override
     public Receive createReceive() {
