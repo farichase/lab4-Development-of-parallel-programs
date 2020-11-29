@@ -39,7 +39,4 @@ public class StoreActor extends AbstractActor {
                 .match(String.class, id -> sender().tell(printerID(id), ActorRef.noSender()))
                 .build();
     }
-    public static Props props() {
-        return Props.create(StoreActor.class);
-    }
 }
