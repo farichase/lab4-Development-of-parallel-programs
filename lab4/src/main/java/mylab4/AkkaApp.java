@@ -15,22 +15,20 @@ import akka.pattern.Patterns;
 import akka.stream.ActorMaterializer;
 import akka.stream.Materializer;
 import akka.stream.javadsl.Flow;
-import akka.util.Timeout;
 import scala.concurrent.Future;
 
 import java.io.IOException;
-import java.time.Duration;
 import java.util.concurrent.CompletionStage;
 
 import static akka.http.javadsl.server.Directives.*;
 
 public class AkkaApp {
 
-    private final static int timeout = 4000;
+    private final static int TIMEOUT = 4000;
     private final static int PORT = 8080;
     private static Route createRoute(ActorSystem system, ActorRef routeActor){
         return get(() -> parameter( "packageID", key -> {
-                    Future<Object> res = Patterns.ask(routeActor, key, timeout);
+                    Future<Object> res = Patterns.ask(routeActor, key, TIMEOUT);
                     return completeOKWithFuture(res, Jackson.marshaller());
                 }
                 )).orElse(
