@@ -6,9 +6,13 @@ import java.io.Serializable;
 import java.util.ArrayList;
 
 public class StoreFunction implements Serializable {
+    @JsonProperty("packageId")
     private final String packageId;
+    @JsonProperty("jsScripts")
     private final String jsScripts;
+    @JsonProperty("functionName")
     private final String functionName;
+    @JsonProperty("tests")
     private final ArrayList<Test> tests;
 
     @JsonCreator
