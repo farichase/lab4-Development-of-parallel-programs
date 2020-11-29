@@ -37,10 +37,7 @@ public class RouteActor extends AbstractActor {
     public Receive createReceive() {
         return receiveBuilder()
                 .match(StoreFunction.class, jsFunc -> funcHandler(jsFunc))
-                .match(String.class, id ->{
-                    Future<Object> res = Patterns.ask(storeActor, id, TIMEOUT);
-                    getSender().tell(res, self());
-                })
+                .match(String.class, msg -> storeActor.forward(msg, getContext()))
                 .build();
     }
 }
